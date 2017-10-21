@@ -14,7 +14,11 @@ def run(cmd_file, restart_interval):
     """ 运行接口 """
     while True:
         process = Popen(cmd_file)
-        sleep(restart_interval)
+        for _ in range(restart_interval):
+            sleep(1)
+            # 如果进程正常结束，则无需再次重启
+            if not process.poll() is None:
+                return
         system('taskkill /F /T /PID ' + str(process.pid))
 
 
