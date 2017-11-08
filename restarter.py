@@ -8,11 +8,13 @@ from subprocess import Popen
 from time import sleep
 from os import system
 from sys import argv
+from datetime import datetime
 
 
 def run(cmd_file, restart_interval):
     """ 运行接口 """
     while True:
+        print datetime.now().strftime('%b-%d-%y %H:%M:%S')
         process = Popen(cmd_file)
         for _ in range(restart_interval):
             sleep(1)
