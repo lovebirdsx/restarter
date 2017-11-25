@@ -20,7 +20,7 @@ def run(cmd_file, restart_interval):
         for _ in range(restart_interval):
             sleep(1)
             # 如果进程正常结束，则无需再次重启
-            sig = process.poll()            
+            sig = process.poll()
             if not sig is None:
                 if process.returncode == 0:
                     return
